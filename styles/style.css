@@ -427,7 +427,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: grid;
   grid-template-columns: 340px 1fr;
   gap: 64px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .about-img-wrapper {
@@ -1331,3 +1331,153 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── 17. HIDDEN UTIL ──────────────────────────────────────── */
 [hidden] { display: none !important; }
+
+/* ── 18. AVATAR COMPONENTS ──────────────────────────────── */
+
+/* Hero avatar (fills .profile-frame circle) */
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-3) 0%, #1a0505 100%);
+  display: grid;
+  place-items: center;
+  border: 4px solid var(--bg);
+  position: relative;
+  z-index: 1;
+  font-size: 5rem;
+  color: var(--red);
+}
+
+/* About section photo wrapper */
+.about-photo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  height: 100%;
+}
+
+.about-photo-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-red);
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(230, 57, 70, 0.15);
+  transition: box-shadow var(--transition);
+}
+.about-photo-frame:hover {
+  box-shadow: 0 0 45px rgba(230, 57, 70, 0.3);
+}
+.about-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-photo-stats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+}
+
+/* Avatar card kept for reference / future use */
+.avatar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 24px;
+  text-align: center;
+  transition: border-color var(--transition);
+}
+.avatar-card:hover { border-color: var(--border-red); }
+
+.avatar-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-3), #1a0505);
+  border: 2px solid var(--border-red);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  font-size: 2.4rem;
+  color: var(--red);
+}
+
+.avatar-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.avatar-role {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.avatar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+.avatar-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0;
+}
+.avatar-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.stat-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--red);
+}
+.stat-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.avatar-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.avatar-links a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+.avatar-links a:hover {
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateY(-2px);
+}

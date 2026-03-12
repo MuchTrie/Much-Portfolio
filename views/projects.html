@@ -1,0 +1,128 @@
+<!-- ========== PROJECTS SECTION ========== -->
+<section id="projects" class="section projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">What I've built</p>
+      <h2 class="section-title">My <span class="text-red">Projects</span></h2>
+    </div>
+
+    <!-- Filter buttons -->
+    <div class="filter-btns reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web Dev</button>
+      <button class="filter-btn" data-filter="ai">AI / Vision</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+
+      <!-- Malaundry -->
+      <div class="project-card reveal" data-category="web">
+        <div class="project-carousel">
+          <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-track">
+            <img src="Project/Malaundry/2.png" alt="Malaundry dashboard" class="carousel-slide active" />
+            <img src="Project/Malaundry/1.png" alt="Malaundry login" class="carousel-slide" />
+            <img src="Project/Malaundry/3.png" alt="Malaundry features" class="carousel-slide" />
+          </div>
+          <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="tag tag-laravel">Laravel</span>
+            <span class="tag tag-bootstrap">Bootstrap</span>
+            <span class="tag tag-mysql">MySQL</span>
+          </div>
+          <h3 class="project-title">Malaundry</h3>
+          <p class="project-desc">
+            Web application for managing laundry businesses:
+            transaction management, customer tracking, service management, and financial reporting.
+          </p>
+          <div class="project-footer">
+            <a href="https://github.com/MuchTrie/LARAVEL_Aplikasi-Management-Laundry"
+               target="_blank" rel="noopener" class="project-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plagiarism Checker -->
+      <div class="project-card reveal" data-category="web">
+        <div class="project-carousel">
+          <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-track">
+            <img src="Project/Plagiarism_Checker/1.png" alt="Upload feature" class="carousel-slide active" />
+            <img src="Project/Plagiarism_Checker/2.png" alt="Duplicate detected" class="carousel-slide" />
+            <img src="Project/Plagiarism_Checker/3.png" alt="Dashboard" class="carousel-slide" />
+            <img src="Project/Plagiarism_Checker/4.png" alt="AWS SNS notification" class="carousel-slide" />
+          </div>
+          <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="tag tag-express">ExpressJS</span>
+            <span class="tag tag-aws">AWS S3</span>
+            <span class="tag tag-aws">AWS SNS</span>
+            <span class="tag tag-mysql">MySQL</span>
+          </div>
+          <h3 class="project-title">Plagiarism Checker</h3>
+          <p class="project-desc">
+            Cloud-integrated plagiarism detection system for student assignments.
+            Detects duplicate files via hash comparison, notifies users via AWS SNS,
+            and stores files on AWS S3.
+          </p>
+          <div class="project-footer">
+            <a href="https://github.com/MuchTrie/ExpressJS_Plagiarism-Detector-with-AWS-Service"
+               target="_blank" rel="noopener" class="project-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fire Detection -->
+      <div class="project-card reveal" data-category="ai">
+        <div class="project-carousel">
+          <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-track">
+            <img src="Project/Fire-Detection/SSProgram2.png" alt="Fire detection result"
+                 class="carousel-slide active" />
+          </div>
+          <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-dots"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="tag tag-python">Python</span>
+            <span class="tag tag-ai">YOLOv5</span>
+            <span class="tag tag-ai">OpenCV</span>
+          </div>
+          <h3 class="project-title">Fire Detection</h3>
+          <p class="project-desc">
+            Real-time fire detection desktop application using YOLOv5 object detection model.
+            Supports live camera feed and image input with bounding-box visualization.
+          </p>
+          <div class="project-footer">
+            <a href="https://github.com/MuchTrie" target="_blank" rel="noopener" class="project-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Under Development placeholder -->
+      <div class="project-card project-wip reveal" data-category="web">
+        <div class="wip-inner">
+          <div class="wip-icon"><i class="fas fa-hammer"></i></div>
+          <h3>Under Development</h3>
+          <p>New project coming soon...</p>
+          <div class="wip-dots"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

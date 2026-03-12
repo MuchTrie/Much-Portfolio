@@ -1,21 +1,55 @@
 /* ============================================================
    MUCH TRIE HARNANTO – PORTFOLIO SCRIPT
-   Features: Navbar, Typed Text, Carousel, Reveal, Certifications,
-             Project Filter, Contact Form, Back-to-Top
+   Features: Section Loader, Navbar, Typed Text, Carousel,
+             Reveal, Certifications, Project Filter, Contact,
+             Back-to-Top
    ============================================================ */
 
 'use strict';
 
+/* ── 0. SECTION LOADER ───────────────────────────────────── */
+// Each entry: [placeholder-div-id, path-to-view-html]
+const SECTIONS = [
+  ['section-navbar',         'views/navbar.html'],
+  ['section-hero',           'views/hero.html'],
+  ['section-about',          'views/about.html'],
+  ['section-projects',       'views/projects.html'],
+  ['section-experience',     'views/experience.html'],
+  ['section-education',      'views/education.html'],
+  ['section-certifications', 'views/certifications.html'],
+  ['section-contact',        'views/contact.html'],
+  ['section-footer',         'views/footer.html'],
+];
+
+async function loadAllSections() {
+  await Promise.all(
+    SECTIONS.map(([id, file]) =>
+      fetch(file)
+        .then(r => {
+          if (!r.ok) throw new Error(`Failed to load ${file} (${r.status})`);
+          return r.text();
+        })
+        .then(html => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = html;
+        })
+        .catch(err => console.error(err))
+    )
+  );
+}
+
 /* ── 1. DOM READY GUARD ──────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  initNavbar();
-  initTypedText();
-  initCarousels();
-  initReveal();
-  initProjectFilter();
-  initContactForm();
-  initBackToTop();
-  initActiveNavLink();
+  loadAllSections().then(() => {
+    initNavbar();
+    initTypedText();
+    initCarousels();
+    initReveal();
+    initProjectFilter();
+    initContactForm();
+    initBackToTop();
+    initActiveNavLink();
+  });
 });
 
 
