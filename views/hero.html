@@ -1,8 +1,8 @@
 <!-- ========== HERO SECTION ========== -->
 <section id="home" class="hero">
-  <div class="hero-bg-lines" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
+  <!-- 3D Particle Network Background -->
+  <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
+  <div class="hero-3d-overlay" aria-hidden="true"></div>
   <div class="container hero-container">
 
     <!-- Text content -->
@@ -39,14 +39,10 @@
       </div>
     </div>
 
-    <!-- Profile photo -->
-    <div class="hero-image fade-in-delay">
-      <div class="profile-frame">
-        <div class="profile-ring"></div>
-        <img src="images/MuchTrieHA.jpg" alt="Much Trie Harnanto" class="profile-pic" />
-      </div>
-      <div class="badge badge-1"><i class="fas fa-shield-alt"></i> Cybersec</div>
-      <div class="badge badge-2"><i class="fas fa-code"></i> Web Dev</div>
+    <!-- 3D Network Globe -->
+    <div class="hero-globe fade-in-delay">
+      <canvas id="globe-3d-canvas" aria-hidden="true"></canvas>
+      <div class="globe-glow" aria-hidden="true"></div>
     </div>
 
   </div>

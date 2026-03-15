@@ -49,6 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initBackToTop();
     initActiveNavLink();
+    // 3D enhancements
+    if (typeof initHero3D === 'function') initHero3D();
+    if (typeof initGlobe3D === 'function') initGlobe3D();
+    initTiltEffect();
+    initHeroParallax();
   });
 });
 
@@ -399,4 +404,51 @@ function initBackToTop() {
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+}
+
+
+/* ── 11. 3D TILT EFFECT (Project Cards) ──────────────────── */
+function initTiltEffect() {
+  // Skip on mobile / touch devices
+  if (window.innerWidth < 768 || 'ontouchstart' in window) return;
+
+  const cards = document.querySelectorAll('.project-card:not(.project-wip)');
+
+  cards.forEach(card => {
+    // Inject glare overlay
+    const glare = document.createElement('div');
+    glare.className = 'tilt-glare';
+    card.appendChild(glare);
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Max rotation 8 degrees
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+
+      // Move glare to mouse position
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      glare.style.background = '';
+    });
+  });
+}
+
+
+/* ── 12. HERO 3D PARALLAX ────────────────────────────────── */
+// Globe handles its own mouse interaction via 3d-globe.js
+function initHeroParallax() {
+  // No-op: replaced by 3D Globe mouse interaction
 }

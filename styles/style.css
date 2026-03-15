@@ -243,32 +243,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding-top: 68px;
 }
 
-/* Animated background lines */
-.hero-bg-lines {
+/* 3D Particle Canvas Background */
+#hero-3d-canvas {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.hero-bg-lines span {
-  position: absolute;
-  top: 0;
-  width: 1px;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(230, 57, 70, 0.12), transparent);
-  animation: lineFall 6s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
 }
-.hero-bg-lines span:nth-child(1) { left: 10%;  animation-delay: 0s;   animation-duration: 7s; }
-.hero-bg-lines span:nth-child(2) { left: 25%;  animation-delay: 1.5s; animation-duration: 5s; }
-.hero-bg-lines span:nth-child(3) { left: 50%;  animation-delay: 3s;   animation-duration: 8s; }
-.hero-bg-lines span:nth-child(4) { left: 75%;  animation-delay: 0.8s; animation-duration: 6s; }
-.hero-bg-lines span:nth-child(5) { left: 90%;  animation-delay: 2.2s; animation-duration: 9s; }
-
-@keyframes lineFall {
-  0%   { opacity: 0; transform: scaleY(0) translateY(-100%); }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; transform: scaleY(1) translateY(0); }
+.hero-3d-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 50%, transparent 0%, var(--bg) 85%),
+    linear-gradient(to bottom, transparent 70%, var(--bg) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-container {
@@ -280,7 +272,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding-bottom: 80px;
 }
 
-.hero-content { flex: 1; max-width: 580px; }
+.hero-content { flex: 1; max-width: 580px; position: relative; z-index: 5; }
 
 .hero-greeting {
   font-size: 0.9rem;
@@ -338,57 +330,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 6px 16px var(--red-glow);
 }
 
-/* Profile image */
-.hero-image {
+/* 3D Network Globe */
+.hero-globe {
   position: relative;
   flex-shrink: 0;
-}
-.profile-frame {
-  position: relative;
-  width: 320px;
-  height: 320px;
-}
-.profile-ring {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--red) 0%, transparent 40%, var(--red) 100%);
-  animation: spin 8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.profile-pic {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid var(--bg);
-  position: relative;
-  z-index: 1;
-}
-
-/* Floating badges */
-.badge {
-  position: absolute;
-  background: var(--bg-card);
-  border: 1px solid var(--border-red);
-  color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 50px;
+  width: 380px;
+  height: 380px;
+  z-index: 5;
   display: flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: var(--shadow);
-  z-index: 2;
-  animation: float 3s ease-in-out infinite;
+  justify-content: center;
 }
-.badge i { color: var(--red); }
-.badge-1 { top: -8px; right: -16px; animation-delay: 0s; }
-.badge-2 { bottom: 24px; left: -24px; animation-delay: 1.5s; }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+#globe-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.globe-glow {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(230, 57, 70, 0.12) 0%,
+    rgba(230, 57, 70, 0.04) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+  animation: globePulse 4s ease-in-out infinite;
+}
+@keyframes globePulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.05); }
 }
 
 /* Scroll indicator */
@@ -466,12 +440,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .about-text strong { color: var(--white); }
 
-/* Info cards */
+/* Info cards — 3D hover */
 .about-info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin: 24px 0;
+  perspective: 600px;
 }
 .about-info-card {
   background: var(--bg-card);
@@ -481,9 +456,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   gap: 12px;
-  transition: border-color var(--transition);
+  transition: all var(--transition);
+  transform-style: preserve-3d;
 }
-.about-info-card:hover { border-color: var(--red); }
+.about-info-card:hover {
+  border-color: var(--red);
+  transform: rotateY(4deg) translateZ(8px);
+  box-shadow: -4px 4px 20px rgba(230, 57, 70, 0.15);
+}
 .about-info-card > i {
   font-size: 1.1rem;
   color: var(--red);
@@ -505,7 +485,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--white);
 }
 
-/* Skills */
+/* Skills — 3D floating */
 .skills-title {
   font-size: 0.9rem;
   font-weight: 600;
@@ -518,6 +498,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  perspective: 500px;
 }
 .skill-card {
   background: var(--bg-card);
@@ -530,13 +511,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all var(--transition);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
 }
 .skill-card:hover {
   border-color: var(--red);
   color: var(--white);
   background: rgba(230, 57, 70, 0.08);
-  transform: translateY(-2px);
+  transform: translateY(-6px) translateZ(20px) rotateX(-5deg);
+  box-shadow: 0 12px 24px rgba(230, 57, 70, 0.2),
+              0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .skill-card i { color: var(--red); font-size: 0.9rem; }
 
@@ -568,11 +552,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 4px 16px rgba(230, 57, 70, 0.35);
 }
 
-/* Grid */
+/* Grid — 3D perspective */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   gap: 28px;
+  perspective: 1000px;
 }
 
 .project-card {
@@ -580,15 +565,37 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition: transform 0.15s ease-out, border-color var(--transition), box-shadow 0.15s ease-out;
   display: flex;
   flex-direction: column;
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
 }
 .project-card:hover {
-  transform: translateY(-6px);
   border-color: var(--border-red);
-  box-shadow: 0 12px 40px rgba(230, 57, 70, 0.15);
+  box-shadow: 0 20px 50px rgba(230, 57, 70, 0.2),
+              0 8px 16px rgba(0, 0, 0, 0.4);
 }
+/* 3D glare overlay */
+.project-card .tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+.project-card:hover .tilt-glare { opacity: 1; }
 
 /* Carousel */
 .project-carousel {
@@ -893,6 +900,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 24px;
   max-width: 800px;
   margin: 0 auto;
+  perspective: 800px;
 }
 .edu-card {
   background: var(--bg-card);
@@ -902,11 +910,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   gap: 20px;
   align-items: flex-start;
-  transition: border-color var(--transition), transform var(--transition);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
 }
 .edu-card:hover {
   border-color: var(--border-red);
-  transform: translateY(-4px);
+  transform: translateY(-6px) rotateX(-3deg) translateZ(12px);
+  box-shadow: 0 16px 40px rgba(230, 57, 70, 0.15),
+              0 6px 12px rgba(0, 0, 0, 0.3);
 }
 .edu-icon {
   width: 48px;
@@ -1082,9 +1093,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   gap: 16px;
-  transition: border-color var(--transition);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
 }
-.contact-card:hover { border-color: var(--border-red); }
+.contact-cards { perspective: 600px; }
+.contact-card:hover {
+  border-color: var(--border-red);
+  transform: rotateY(-4deg) translateZ(10px);
+  box-shadow: 4px 4px 20px rgba(230, 57, 70, 0.15);
+}
 .contact-icon {
   width: 42px;
   height: 42px;
@@ -1296,7 +1313,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-buttons { justify-content: center; }
   .hero-socials { justify-content: center; }
   .hero-description { margin-left: auto; margin-right: auto; }
-  .profile-frame { width: 240px; height: 240px; }
+  .hero-globe { width: 280px; height: 280px; }
 
   /* About */
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1314,8 +1331,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   :root { --section-py: 60px; }
 
   .hero-title { font-size: 2rem; }
-  .profile-frame { width: 200px; height: 200px; }
-  .badge-1, .badge-2 { display: none; }
+  .hero-globe { width: 220px; height: 220px; }
 
   .about-info-grid { grid-template-columns: 1fr; }
 
@@ -1331,6 +1347,78 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── 17. HIDDEN UTIL ──────────────────────────────────────── */
 [hidden] { display: none !important; }
+
+/* ── 18b. 3D SECTION ACCENT ─────────────────────────────── */
+.section-3d-accent {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 20px;
+  perspective: 400px;
+}
+.section-3d-accent span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--red);
+  border-radius: 2px;
+  animation: spin3dAccent 4s linear infinite;
+  opacity: 0.5;
+}
+.section-3d-accent span:nth-child(1) { animation-delay: 0s; animation-duration: 3.5s; }
+.section-3d-accent span:nth-child(2) {
+  width: 18px;
+  height: 18px;
+  background: rgba(230, 57, 70, 0.15);
+  opacity: 0.8;
+  animation-delay: 0.5s;
+  animation-duration: 4s;
+}
+.section-3d-accent span:nth-child(3) { animation-delay: 1s; animation-duration: 4.5s; }
+
+@keyframes spin3dAccent {
+  0%   { transform: rotate3d(1, 1, 0, 0deg); }
+  25%  { transform: rotate3d(1, 1, 0, 90deg); }
+  50%  { transform: rotate3d(1, 1, 0, 180deg); }
+  75%  { transform: rotate3d(1, 1, 0, 270deg); }
+  100% { transform: rotate3d(1, 1, 0, 360deg); }
+}
+
+/* ── 18c. 3D CERTIFICATION CARDS ────────────────────────── */
+.cert-providers {
+  perspective: 800px;
+}
+.cert-provider {
+  transform-style: preserve-3d;
+  transition: all var(--transition);
+}
+.cert-provider:hover {
+  transform: translateZ(8px);
+  box-shadow: 0 8px 30px rgba(230, 57, 70, 0.1);
+}
+
+/* ── 18d. 3D RESPONSIVE DISABLE ─────────────────────────── */
+@media (max-width: 768px) {
+  .project-card,
+  .skill-card,
+  .about-info-card,
+  .edu-card,
+  .contact-card,
+  .cert-provider {
+    transform-style: flat !important;
+  }
+  .project-card:hover,
+  .skill-card:hover,
+  .about-info-card:hover,
+  .edu-card:hover,
+  .contact-card:hover,
+  .cert-provider:hover {
+    transform: translateY(-4px) !important;
+  }
+  .section-3d-accent {
+    display: none;
+  }
+}
 
 /* ── 18. AVATAR COMPONENTS ──────────────────────────────── */
 
