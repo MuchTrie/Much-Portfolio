@@ -685,6 +685,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .tag-aws       { background: rgba(255, 153, 0, 0.75); }
 .tag-python    { background: rgba(55, 118, 171, 0.75); }
 .tag-ai        { background: rgba(100, 60, 180, 0.75); }
+.tag-react     { background: rgba(97, 218, 251, 0.75); }
+.tag-inertia   { background: rgba(121, 93, 207, 0.75); }
 
 .project-title {
   font-size: 1.05rem;
