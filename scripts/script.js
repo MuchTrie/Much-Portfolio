@@ -292,27 +292,118 @@ window.toggleCert = function(id) {
 };
 
 
-/* ── 8. PROJECT FILTER ───────────────────────────────────── */
+/* ── 8. PROJECT FILTER AND PAGINATION ──────────────────────── */
 function initProjectFilter() {
   const filterBtns   = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card[data-category]');
+  const projectCards = Array.from(document.querySelectorAll('.project-card[data-category]'));
+  const paginationContainer = document.getElementById('projects-pagination');
+
+  const CARDS_PER_PAGE = 6;
+  let currentPage = 1;
+  let currentFilter = 'all';
+
+  function renderCards() {
+    // Filter cards
+    const filteredCards = projectCards.filter(card => {
+      return currentFilter === 'all' || card.dataset.category === currentFilter;
+    });
+
+    const totalPages = Math.ceil(filteredCards.length / CARDS_PER_PAGE);
+
+    // Hide all first
+    projectCards.forEach(card => card.style.display = 'none');
+
+    // Calculate range
+    const start = (currentPage - 1) * CARDS_PER_PAGE;
+    const end = start + CARDS_PER_PAGE;
+
+    // Show current page cards
+    const pageCards = filteredCards.slice(start, end);
+    pageCards.forEach(card => {
+      card.style.display = '';
+      card.classList.add('visible'); // re-trigger reveal
+    });
+
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    if (!paginationContainer) return;
+    paginationContainer.innerHTML = '';
+
+    if (totalPages <= 1) {
+      paginationContainer.style.display = 'none';
+      return;
+    }
+
+    paginationContainer.style.display = 'flex';
+
+    // Prev btn
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'page-btn prev-btn';
+    prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderCards();
+        scrollToProjects();
+      }
+    });
+    paginationContainer.appendChild(prevBtn);
+
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+      pageBtn.textContent = i;
+      pageBtn.addEventListener('click', () => {
+        currentPage = i;
+        renderCards();
+        scrollToProjects();
+      });
+      paginationContainer.appendChild(pageBtn);
+    }
+
+    // Next btn
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'page-btn next-btn';
+    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderCards();
+        scrollToProjects();
+      }
+    });
+    paginationContainer.appendChild(nextBtn);
+  }
+
+  function scrollToProjects() {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      // Small delay to let items render before scrolling
+      setTimeout(() => {
+        const y = projectsSection.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }, 50);
+    }
+  }
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Update active button
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.dataset.filter;
-
-      projectCards.forEach(card => {
-        const match = filter === 'all' || card.dataset.category === filter;
-        card.style.display = match ? '' : 'none';
-        // Re-trigger reveal for filtered cards
-        if (match) card.classList.add('visible');
-      });
+      currentFilter = btn.dataset.filter;
+      currentPage = 1; // reset to 1 on filter
+      renderCards();
     });
   });
+
+  // Initial render
+  renderCards();
 }
 
 

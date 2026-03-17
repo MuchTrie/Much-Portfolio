@@ -897,6 +897,14 @@ button {
   background: rgba(121, 93, 207, 0.75);
 }
 
+.tag-golang {
+  background: rgba(0, 173, 181, 0.75);
+}
+
+.tag-api {
+  background: rgba(0, 128, 0, 0.75);
+}
+
 .project-title {
   font-size: 1.05rem;
   font-weight: 700;
@@ -1010,6 +1018,46 @@ button {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.page-btn.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* ── 10. EXPERIENCE ──────────────────────────────────────── */
