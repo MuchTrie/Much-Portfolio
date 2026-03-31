@@ -1344,11 +1344,6 @@ button {
   box-shadow: var(--shadow-red);
 }
 
-.cert-provider--featured {
-  border-color: var(--border-red);
-  background: linear-gradient(155deg, rgba(230, 57, 70, 0.12) 0%, rgba(19, 19, 19, 1) 42%);
-}
-
 .cert-provider-top {
   display: flex;
   align-items: center;
