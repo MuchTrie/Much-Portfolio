@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypedText();
     initCarousels();
     initReveal();
+    initCertificationModal();
     initProjectFilter();
     initContactForm();
     initBackToTop();
@@ -273,23 +274,74 @@ function initReveal() {
 }
 
 
-/* ── 7. CERTIFICATIONS TOGGLE ────────────────────────────── */
-/**
- * Called from inline onclick="toggleCert('id')" in HTML.
- * Exposed on window for inline handler access.
- */
-window.toggleCert = function(id) {
-  const list   = document.getElementById(id);
-  const arrow  = document.getElementById(`${id}-arrow`);
-  const header = list.previousElementSibling; // button
+/* ── 7. CERTIFICATION MODALS ─────────────────────────────── */
+function initCertificationModal() {
+  const modalTriggers = document.querySelectorAll('[data-cert-modal-target]');
+  const modals = document.querySelectorAll('.cert-modal');
+  if (!modalTriggers.length || !modals.length) return;
 
-  if (!list) return;
+  let activeModal = null;
+  let lastFocusedElement = null;
 
-  const isOpen = list.classList.contains('open');
-  list.classList.toggle('open', !isOpen);
-  if (arrow) arrow.classList.toggle('open', !isOpen);
-  if (header) header.setAttribute('aria-expanded', String(!isOpen));
-};
+  function closeModal(modal) {
+    if (!modal) return;
+
+    modal.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+
+    window.setTimeout(() => {
+      modal.hidden = true;
+      if (activeModal === modal) activeModal = null;
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+    }, 220);
+  }
+
+  function openModal(modal, trigger) {
+    if (!modal) return;
+
+    if (activeModal && activeModal !== modal) {
+      activeModal.classList.remove('is-open');
+      activeModal.hidden = true;
+    }
+
+    lastFocusedElement = trigger || document.activeElement;
+    modal.hidden = false;
+    requestAnimationFrame(() => {
+      modal.classList.add('is-open');
+    });
+
+    activeModal = modal;
+    document.body.classList.add('modal-open');
+
+    const focusTarget = modal.querySelector('.cert-modal-close, .cert-btn, .cert-open-btn');
+    if (focusTarget) focusTarget.focus();
+  }
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modalId = trigger.getAttribute('data-cert-modal-target');
+      if (!modalId) return;
+      openModal(document.getElementById(modalId), trigger);
+    });
+  });
+
+  modals.forEach(modal => {
+    modal.addEventListener('click', (event) => {
+      const closeTrigger = event.target.closest('[data-cert-modal-close]');
+      if (closeTrigger && modal.contains(closeTrigger)) {
+        closeModal(modal);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && activeModal) {
+      closeModal(activeModal);
+    }
+  });
+}
 
 
 /* ── 8. PROJECT FILTER AND PAGINATION ──────────────────────── */

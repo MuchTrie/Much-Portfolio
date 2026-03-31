@@ -9,226 +9,313 @@
 
     <div class="cert-providers reveal">
 
-      <!-- Google Cybersecurity -->
-      <div class="cert-provider">
-        <button class="cert-provider-header" onclick="toggleCert('google')" aria-expanded="false">
+      <article class="cert-provider cert-provider--featured">
+        <div class="cert-provider-top">
           <div class="cert-provider-logo">
             <img src="images/logos/google.png" alt="Google" />
           </div>
           <div class="cert-provider-info">
             <h3>Google</h3>
             <p>Google Career Certificates</p>
-            <span class="cert-badge">1 Certificate</span>
-          </div>
-          <i class="fas fa-chevron-down cert-arrow" id="google-arrow"></i>
-        </button>
-        <div class="cert-list" id="google">
-          <div class="cert-item">
-            <div>
-              <h4>Google Cybersecurity Professional</h4>
-              <p>Google professional certification in cybersecurity fundamentals and operations</p>
-            </div>
-            <a href="Certification/GOOGLE-CYBERSECURITY/MuchTrieHarnanto_Google Cybersecurity.pdf" target="_blank"
-              rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
           </div>
         </div>
-      </div>
+        <p class="cert-provider-desc">
+          Industry-recognized cybersecurity credential covering threat detection, incident response, and risk reduction.
+        </p>
+        <div class="cert-provider-footer">
+          <span class="cert-badge">1 Certificate</span>
+          <button type="button" class="cert-open-btn" data-cert-modal-target="cert-modal-google">
+            <i class="fas fa-layer-group"></i> View Details
+          </button>
+        </div>
+      </article>
 
-      <!-- BNSP -->
-      <div class="cert-provider">
-        <button class="cert-provider-header" onclick="toggleCert('bnsp')" aria-expanded="false">
+      <article class="cert-provider">
+        <div class="cert-provider-top">
           <div class="cert-provider-logo">
             <img src="images/logos/bnsp.jpg" alt="BNSP" />
           </div>
           <div class="cert-provider-info">
             <h3>BNSP</h3>
             <p>National Professional Certification Agency</p>
-            <span class="cert-badge">4 Certificates</span>
-          </div>
-          <i class="fas fa-chevron-down cert-arrow" id="bnsp-arrow"></i>
-        </button>
-        <div class="cert-list" id="bnsp">
-          <div class="cert-item">
-            <div>
-              <h4>Programming Foundation</h4>
-              <p>Professional certification in programming fundamentals</p>
-            </div>
-            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_ProgrammingFoundation.pdf" target="_blank" rel="noopener"
-              class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Junior Cybersecurity</h4>
-              <p>Entry-level cybersecurity professional certification</p>
-            </div>
-            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_JuniorCyberSecurity.pdf" target="_blank" rel="noopener"
-              class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Software Development</h4>
-              <p>Professional certification in software development</p>
-            </div>
-            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_SoftwareDevelopment.pdf" target="_blank" rel="noopener"
-              class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Web Programming</h4>
-              <p>Professional certification in web programming and modern web technologies</p>
-            </div>
-            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_WebProgramming.pdf" target="_blank" rel="noopener"
-              class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
           </div>
         </div>
-      </div>
+        <p class="cert-provider-desc">
+          Competency-based certifications for software engineering, web development, and cybersecurity foundations.
+        </p>
+        <div class="cert-provider-footer">
+          <span class="cert-badge">4 Certificates</span>
+          <button type="button" class="cert-open-btn" data-cert-modal-target="cert-modal-bnsp">
+            <i class="fas fa-layer-group"></i> View Details
+          </button>
+        </div>
+      </article>
 
-      <!-- CISCO -->
-      <div class="cert-provider">
-        <button class="cert-provider-header" onclick="toggleCert('cisco')" aria-expanded="false">
+      <article class="cert-provider">
+        <div class="cert-provider-top">
           <div class="cert-provider-logo">
-            <img src="images/logos/cisco.png" alt="CISCO" />
+            <img src="images/logos/cisco.png" alt="Cisco" />
           </div>
           <div class="cert-provider-info">
             <h3>CISCO Networking Academy</h3>
             <p>Networking &amp; Cybersecurity Training</p>
-            <span class="cert-badge">5 Certificates</span>
-          </div>
-          <i class="fas fa-chevron-down cert-arrow" id="cisco-arrow"></i>
-        </button>
-        <div class="cert-list" id="cisco">
-          <div class="cert-item">
-            <div>
-              <h4>Introduction to Cybersecurity</h4>
-              <p>Fundamental cybersecurity concepts and principles</p>
-            </div>
-            <a href="Certification/CISCO/Introduction_to_Cybersecurity.pdf" target="_blank"
-              rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-
-          <div class="cert-item">
-            <div>
-              <h4>Endpoint Security</h4>
-              <p>Securing endpoints including OS hardening</p>
-            </div>
-            <a href="Certification/CISCO/Endpoint_Security.pdf" target="_blank" rel="noopener"
-              class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Network Defense</h4>
-              <p>Network hardening, monitoring, and defense strategies</p>
-            </div>
-            <a href="Certification/CISCO/Network-Defense.pdf" target="_blank" rel="noopener"
-              class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Cyber Threat Management</h4>
-              <p>Threat identification, analysis, and incident response strategies</p>
-            </div>
-            <a href="Certification/CISCO/Cyber_Threat_Management.pdf" target="_blank"
-              rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Ethical Hacker</h4>
-              <p>Penetration testing and ethical hacking methodologies</p>
-            </div>
-            <a href="Certification/CISCO/Ethical Hacker.pdf" target="_blank" rel="noopener"
-              class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
           </div>
         </div>
-      </div>
+        <p class="cert-provider-desc">
+          Hands-on learning path in network defense, endpoint security, ethical hacking, and threat management.
+        </p>
+        <div class="cert-provider-footer">
+          <span class="cert-badge">5 Certificates</span>
+          <button type="button" class="cert-open-btn" data-cert-modal-target="cert-modal-cisco">
+            <i class="fas fa-layer-group"></i> View Details
+          </button>
+        </div>
+      </article>
 
-      <!-- Digitalent Kominfo -->
-      <div class="cert-provider">
-        <button class="cert-provider-header" onclick="toggleCert('digitalent')" aria-expanded="false">
+      <article class="cert-provider">
+        <div class="cert-provider-top">
           <div class="cert-provider-logo">
             <img src="images/logos/digitalent.png" alt="Digitalent Kominfo" />
           </div>
           <div class="cert-provider-info">
             <h3>Digitalent Kominfo</h3>
-            <p>Ministry of Communication &amp; IT – Digital Talent Scholarship</p>
-            <span class="cert-badge">5 Certificates</span>
-          </div>
-          <i class="fas fa-chevron-down cert-arrow" id="digitalent-arrow"></i>
-        </button>
-        <div class="cert-list" id="digitalent">
-          <div class="cert-item">
-            <div>
-              <h4>Junior CyberSecurity</h4>
-              <p>VSGA (Vocational School Graduate Academy) – Entry-level cybersecurity certification</p>
-            </div>
-            <a href="Certification/VSGA (Vocational School Graduate Academy) - Junior CyberSecurity/MuchTrieHarnanto_Digitalent_JuniorCyberSecurity.pdf"
-              target="_blank" rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Junior Security Operation Center Analyst</h4>
-              <p>TSA (Talent Scouting Academy) – Security operations center monitoring, incident detection, and response
-              </p>
-            </div>
-            <a href="Certification/TSA (Talent Scouting Academy) - Junior Security Operation Center Analyst/MuchTrieHarnanto_Digitalent_JuniorSecurityOperationCenterAnalyst.pdf"
-              target="_blank" rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Fundamental Cybersecurity</h4>
-              <p>FGA (Fresh Graduate Academy) – Core cybersecurity concepts and security foundations</p>
-            </div>
-            <a href="Certification/FGA - Cybersecurity/1_152022083_MuchTrieHarnanto_Fundamental Cybersecurity.pdf"
-              target="_blank" rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Intermediate Cybersecurity</h4>
-              <p>FGA (Fresh Graduate Academy) – Intermediate-level security analysis and threat mitigation</p>
-            </div>
-            <a href="Certification/FGA - Cybersecurity/2_152022083_MuchTrieHarnanto_Intermediate Cybersecurity.pdf"
-              target="_blank" rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
-          </div>
-          <div class="cert-item">
-            <div>
-              <h4>Final Courses Cybersecurity</h4>
-              <p>FGA (Fresh Graduate Academy) – Advanced cybersecurity topics and capstone assessment</p>
-            </div>
-            <a href="Certification/FGA - Cybersecurity/3_152022083_MuchTrieHarnanto_FinalCourses Cybersecurity.pdf"
-              target="_blank" rel="noopener" class="cert-btn">
-              <i class="fas fa-eye"></i> View
-            </a>
+            <p>Digital Talent Scholarship Program</p>
           </div>
         </div>
-      </div>
+        <p class="cert-provider-desc">
+          National upskilling program in SOC operations, practical cybersecurity workflows, and progressive learning tracks.
+        </p>
+        <div class="cert-provider-footer">
+          <span class="cert-badge">5 Certificates</span>
+          <button type="button" class="cert-open-btn" data-cert-modal-target="cert-modal-digitalent">
+            <i class="fas fa-layer-group"></i> View Details
+          </button>
+        </div>
+      </article>
 
+    </div>
+
+    <!-- Google Modal -->
+    <div class="cert-modal" id="cert-modal-google" role="dialog" aria-modal="true" aria-labelledby="cert-modal-google-title" hidden>
+      <div class="cert-modal-backdrop" data-cert-modal-close></div>
+      <div class="cert-modal-content" role="document">
+        <button type="button" class="cert-modal-close" aria-label="Close certification details" data-cert-modal-close>
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="cert-modal-header">
+          <div class="cert-provider-logo cert-modal-logo">
+            <img src="images/logos/google.png" alt="Google" />
+          </div>
+          <div>
+            <p class="cert-modal-label">Certification Provider</p>
+            <h3 id="cert-modal-google-title">Google</h3>
+            <p class="cert-modal-subtitle">Google Career Certificates</p>
+          </div>
+        </div>
+        <div class="cert-modal-list">
+          <article class="cert-item">
+            <div>
+              <h4>Google Cybersecurity Professional Certificate</h4>
+              <p>Professional certification in cybersecurity fundamentals, security operations, and incident response.</p>
+            </div>
+            <a href="Certification/GOOGLE-CYBERSECURITY/MuchTrieHarnanto_Google Cybersecurity.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- BNSP Modal -->
+    <div class="cert-modal" id="cert-modal-bnsp" role="dialog" aria-modal="true" aria-labelledby="cert-modal-bnsp-title" hidden>
+      <div class="cert-modal-backdrop" data-cert-modal-close></div>
+      <div class="cert-modal-content" role="document">
+        <button type="button" class="cert-modal-close" aria-label="Close certification details" data-cert-modal-close>
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="cert-modal-header">
+          <div class="cert-provider-logo cert-modal-logo">
+            <img src="images/logos/bnsp.jpg" alt="BNSP" />
+          </div>
+          <div>
+            <p class="cert-modal-label">Certification Provider</p>
+            <h3 id="cert-modal-bnsp-title">BNSP</h3>
+            <p class="cert-modal-subtitle">National Professional Certification Agency</p>
+          </div>
+        </div>
+        <div class="cert-modal-list">
+          <article class="cert-item">
+            <div>
+              <h4>Programming Foundation</h4>
+              <p>Professional certification in programming fundamentals.</p>
+            </div>
+            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_ProgrammingFoundation.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Junior Cybersecurity</h4>
+              <p>Entry-level cybersecurity professional certification.</p>
+            </div>
+            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_JuniorCyberSecurity.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Software Development</h4>
+              <p>Professional certification in software development.</p>
+            </div>
+            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_SoftwareDevelopment.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Web Programming</h4>
+              <p>Professional certification in web programming and modern web technologies.</p>
+            </div>
+            <a href="Certification/BNSP/MuchTrieHarnanto_BNSP_WebProgramming.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cisco Modal -->
+    <div class="cert-modal" id="cert-modal-cisco" role="dialog" aria-modal="true" aria-labelledby="cert-modal-cisco-title" hidden>
+      <div class="cert-modal-backdrop" data-cert-modal-close></div>
+      <div class="cert-modal-content" role="document">
+        <button type="button" class="cert-modal-close" aria-label="Close certification details" data-cert-modal-close>
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="cert-modal-header">
+          <div class="cert-provider-logo cert-modal-logo">
+            <img src="images/logos/cisco.png" alt="Cisco" />
+          </div>
+          <div>
+            <p class="cert-modal-label">Certification Provider</p>
+            <h3 id="cert-modal-cisco-title">CISCO Networking Academy</h3>
+            <p class="cert-modal-subtitle">Networking &amp; Cybersecurity Training</p>
+          </div>
+        </div>
+        <div class="cert-modal-list">
+          <article class="cert-item">
+            <div>
+              <h4>Introduction to Cybersecurity</h4>
+              <p>Fundamental cybersecurity concepts and principles.</p>
+            </div>
+            <a href="Certification/CISCO/Introduction_to_Cybersecurity.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Endpoint Security</h4>
+              <p>Securing endpoints including OS hardening.</p>
+            </div>
+            <a href="Certification/CISCO/Endpoint_Security.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Network Defense</h4>
+              <p>Network hardening, monitoring, and defense strategies.</p>
+            </div>
+            <a href="Certification/CISCO/Network-Defense.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Cyber Threat Management</h4>
+              <p>Threat identification, analysis, and incident response strategies.</p>
+            </div>
+            <a href="Certification/CISCO/Cyber_Threat_Management.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Ethical Hacker</h4>
+              <p>Penetration testing and ethical hacking methodologies.</p>
+            </div>
+            <a href="Certification/CISCO/Ethical Hacker.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Digitalent Modal -->
+    <div class="cert-modal" id="cert-modal-digitalent" role="dialog" aria-modal="true" aria-labelledby="cert-modal-digitalent-title" hidden>
+      <div class="cert-modal-backdrop" data-cert-modal-close></div>
+      <div class="cert-modal-content" role="document">
+        <button type="button" class="cert-modal-close" aria-label="Close certification details" data-cert-modal-close>
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="cert-modal-header">
+          <div class="cert-provider-logo cert-modal-logo">
+            <img src="images/logos/digitalent.png" alt="Digitalent Kominfo" />
+          </div>
+          <div>
+            <p class="cert-modal-label">Certification Provider</p>
+            <h3 id="cert-modal-digitalent-title">Digitalent Kominfo</h3>
+            <p class="cert-modal-subtitle">Digital Talent Scholarship Program</p>
+          </div>
+        </div>
+        <div class="cert-modal-list">
+          <article class="cert-item">
+            <div>
+              <h4>Junior CyberSecurity</h4>
+              <p>VSGA (Vocational School Graduate Academy) - Entry-level cybersecurity certification.</p>
+            </div>
+            <a href="Certification/VSGA (Vocational School Graduate Academy) - Junior CyberSecurity/MuchTrieHarnanto_Digitalent_JuniorCyberSecurity.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Junior Security Operation Center Analyst</h4>
+              <p>TSA (Talent Scouting Academy) - SOC monitoring, incident detection, and response.</p>
+            </div>
+            <a href="Certification/TSA (Talent Scouting Academy) - Junior Security Operation Center Analyst/MuchTrieHarnanto_Digitalent_JuniorSecurityOperationCenterAnalyst.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Fundamental Cybersecurity</h4>
+              <p>FGA (Fresh Graduate Academy) - Core cybersecurity concepts and security foundations.</p>
+            </div>
+            <a href="Certification/FGA - Cybersecurity/1_152022083_MuchTrieHarnanto_Fundamental Cybersecurity.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Intermediate Cybersecurity</h4>
+              <p>FGA (Fresh Graduate Academy) - Intermediate-level security analysis and threat mitigation.</p>
+            </div>
+            <a href="Certification/FGA - Cybersecurity/2_152022083_MuchTrieHarnanto_Intermediate Cybersecurity.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+          <article class="cert-item">
+            <div>
+              <h4>Final Courses Cybersecurity</h4>
+              <p>FGA (Fresh Graduate Academy) - Advanced cybersecurity topics and capstone assessment.</p>
+            </div>
+            <a href="Certification/FGA - Cybersecurity/3_152022083_MuchTrieHarnanto_FinalCourses Cybersecurity.pdf" target="_blank" rel="noopener" class="cert-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </article>
+        </div>
+      </div>
     </div>
   </div>
 </section>
