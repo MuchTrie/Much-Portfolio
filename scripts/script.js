@@ -10,15 +10,15 @@
 /* ── 0. SECTION LOADER ───────────────────────────────────── */
 // Each entry: [placeholder-div-id, path-to-view-html]
 const SECTIONS = [
-  ['section-navbar',         'views/navbar.html'],
-  ['section-hero',           'views/hero.html'],
-  ['section-about',          'views/about.html'],
-  ['section-projects',       'views/projects.html'],
-  ['section-experience',     'views/experience.html'],
-  ['section-education',      'views/education.html'],
+  ['section-navbar', 'views/navbar.html'],
+  ['section-hero', 'views/hero.html'],
+  ['section-about', 'views/about.html'],
+  ['section-projects', 'views/projects.html'],
+  ['section-experience', 'views/experience.html'],
+  ['section-education', 'views/education.html'],
   ['section-certifications', 'views/certifications.html'],
-  ['section-contact',        'views/contact.html'],
-  ['section-footer',         'views/footer.html'],
+  ['section-contact', 'views/contact.html'],
+  ['section-footer', 'views/footer.html'],
 ];
 
 async function loadAllSections() {
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── 2. NAVBAR (sticky scroll + hamburger) ───────────────── */
 function initNavbar() {
-  const navbar    = document.getElementById('navbar');
+  const navbar = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
-  const navMenu   = document.getElementById('nav-menu');
-  const overlay   = document.getElementById('nav-overlay');
+  const navMenu = document.getElementById('nav-menu');
+  const overlay = document.getElementById('nav-overlay');
 
   // Add scrolled class for bg opacity change
   window.addEventListener('scroll', () => {
@@ -137,16 +137,17 @@ function initTypedText() {
   if (!el) return;
 
   const phrases = [
+    'Blue Team Defender',
     'Cybersecurity Enthusiast',
+    'SOC & SIEM Practitioner',
+    'Incident Response Automation',
     'Full-Stack Web Developer',
-    'Informatics Student',
-    'Cloud Computing Learner',
   ];
 
   let phraseIndex = 0;
-  let charIndex   = 0;
-  let isDeleting  = false;
-  let pause       = false;
+  let charIndex = 0;
+  let isDeleting = false;
+  let pause = false;
 
   function type() {
     if (pause) return;
@@ -192,10 +193,10 @@ function initCarousels() {
   const carousels = document.querySelectorAll('.project-carousel');
 
   carousels.forEach(carousel => {
-    const slides   = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
     const dotsWrap = carousel.querySelector('.carousel-dots');
-    const prevBtn  = carousel.querySelector('.carousel-prev');
-    const nextBtn  = carousel.querySelector('.carousel-next');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
 
     if (slides.length === 0) return;
 
@@ -347,7 +348,7 @@ function initCertificationModal() {
 
 /* ── 8. PROJECT FILTER AND PAGINATION ──────────────────────── */
 function initProjectFilter() {
-  const filterBtns   = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = Array.from(document.querySelectorAll('.project-card[data-category]'));
   const paginationContainer = document.getElementById('projects-pagination');
 
@@ -462,7 +463,7 @@ function initProjectFilter() {
 
 /* ── 9. CONTACT FORM VALIDATION ──────────────────────────── */
 function initContactForm() {
-  const form    = document.getElementById('contact-form');
+  const form = document.getElementById('contact-form');
   const success = document.getElementById('form-success');
   if (!form) return;
 
@@ -476,15 +477,15 @@ function initContactForm() {
   function showError(fieldId, msg) {
     const field = document.getElementById(fieldId);
     const errEl = document.getElementById(`${fieldId}-error`);
-    if (field)  field.classList.add('error');
-    if (errEl)  errEl.textContent = msg;
+    if (field) field.classList.add('error');
+    if (errEl) errEl.textContent = msg;
   }
 
   function clearError(fieldId) {
     const field = document.getElementById(fieldId);
     const errEl = document.getElementById(`${fieldId}-error`);
-    if (field)  field.classList.remove('error');
-    if (errEl)  errEl.textContent = '';
+    if (field) field.classList.remove('error');
+    if (errEl) errEl.textContent = '';
   }
 
   // Live clear on input
@@ -497,8 +498,8 @@ function initContactForm() {
     e.preventDefault();
     let valid = true;
 
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
 
@@ -522,7 +523,7 @@ function initContactForm() {
 
     // Simulate send (mailto fallback)
     const safeSubject = sanitize(subject);
-    const safeBody    = sanitize(`Name: ${name}\n\n${message}`);
+    const safeBody = sanitize(`Name: ${name}\n\n${message}`);
 
     // Build mailto string (safe because values are URL-encoded by encodeURIComponent)
     const mailtoLink = `mailto:muchtrieha@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
@@ -600,11 +601,11 @@ function initHeroParallax() {
 
 /* ── 13. PDF VIEWER MODAL ────────────────────────────────── */
 function initPdfViewer() {
-  const modal     = document.getElementById('pdf-viewer-modal');
-  const iframe    = document.getElementById('pdf-viewer-iframe');
-  const titleEl   = document.getElementById('pdf-viewer-title');
-  const closeBtn  = document.getElementById('pdf-viewer-close');
-  const backdrop  = document.getElementById('pdf-viewer-backdrop');
+  const modal = document.getElementById('pdf-viewer-modal');
+  const iframe = document.getElementById('pdf-viewer-iframe');
+  const titleEl = document.getElementById('pdf-viewer-title');
+  const closeBtn = document.getElementById('pdf-viewer-close');
+  const backdrop = document.getElementById('pdf-viewer-backdrop');
 
   if (!modal || !iframe) return;
 
@@ -630,7 +631,7 @@ function initPdfViewer() {
     const btn = e.target.closest('.cert-view-pdf');
     if (!btn) return;
     e.preventDefault();
-    const pdf   = btn.getAttribute('data-pdf');
+    const pdf = btn.getAttribute('data-pdf');
     const title = btn.getAttribute('data-title');
     if (pdf) openPdf(pdf, title);
   });
