@@ -137,11 +137,8 @@ function initTypedText() {
   if (!el) return;
 
   const phrases = [
-    'Blue Team Defender',
-    'Cybersecurity Enthusiast',
-    'SOC & SIEM Practitioner',
-    'Incident Response Automation',
-    'Full-Stack Web Developer',
+    "Fullstack Developer",
+    "cybersecurity enthusiast",
   ];
 
   let phraseIndex = 0;
